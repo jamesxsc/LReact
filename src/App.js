@@ -44,7 +44,7 @@ function App() {
         const taskToToggle = await fetchTask(id);
         const updTask = {...taskToToggle, reminder: !taskToToggle.reminder}
 
-        const res = await fetch(`http://localhost:5000/tasks/${id}`,
+        await fetch(`http://localhost:5000/tasks/${id}`,
             {
                 method: 'PUT',
                 headers: {
@@ -52,8 +52,6 @@ function App() {
                 },
                 body: JSON.stringify(updTask)
             })
-
-        const data = await res.json();
 
         setTasks(
             tasks.map((task) =>
